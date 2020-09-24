@@ -19,4 +19,5 @@ TWILIO_ACCOUNT_SID = 'xxxxxxxxxxxxxxxxxxxxxxxxx'
 TWILIO_AUTH_TOKEN = 'xxxxxxxxxxxxxxxxxxxxxxxxx'
 TWILIO_PHONE_NUMBER = '+1662123213' # twilio's number 
 YOUR_NUMBER = '+59174121222' # region code + your number
+YOUR_NETWORK = '192.168.1.1/24' # your network, 24 means 255.255.255.0
 TIME_MIN = 30 # the scripts runs every X minutes

@@ -2,6 +2,7 @@ import scapy.all as scapy
 from mac_vendor_lookup import MacLookup, BaseMacLookup
 from twilio.rest import Client
 from secrets import *
+from datetime import datetime
 import time
 import os 
 
@@ -73,13 +74,14 @@ def parse_dictionary(item):
 
 if __name__ == "__main__":
     while True:
-        intruders = detect_intruder(scan('192.168.1.1/24'))
+        intruders = detect_intruder(scan(YOUR_NETWORK))
         message = 'Intruders detected!\n\n'
-        for intruder in intruders:
-            message += 'mac: {}\n vendor: {}\n\n'.format(intruder['mac'], intruder['vendor'])
-            write_text(parse_dictionary(intruder))
         if len(intruders) > 0:
-            if send_message(message):
-                print('message send!')
+            write_text('\n\n---> Timestamp: {}'.format(datetime.now()))
+            for intruder in intruders:
+                message += 'mac: {}\nvendor: {}\n\n'.format(intruder['mac'], intruder['vendor'])
+                write_text(parse_dictionary(intruder))
+            # if send_message(message):
+            #     print('message send!')
         print('sleep .zZ for {} minutes'.format(TIME_MIN))
         time.sleep(TIME_MIN * 60)
